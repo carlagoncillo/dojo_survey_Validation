@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/style.css') }}">
+    <title>Dojo Survey</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Dojo Survey</h1>
+        <form action="/create/survey" method="POST">
+            <div class="top-bot">
+                <label>Name:</label>
+            </div>
+                <input class="input1" type="text" name="name" placeholder="enter name">
+            <div class="top-bot">    
+                <label>Dojo Location:</label>
+            </div>
+                <select class="drop" name="location">
+                    <option value="">Select A Location</option>
+                    <option value="California">California</option>
+                    <option value="Colorado">Colorado</option>
+                    <option value="Hawaii">Hawaii</option>
+                    <option value="Miami">Miami</option>
+                    <option value="New York">New York</option>
+                    <option value="Seattle">Seattle</option>
+                    <option value="Texas">Texas</option>
+                </select>
+            <div class="top-bot">  
+                <label>Favorite Language:</label>
+            </div> 
+                <select class="drop" name="language">
+                    <option value="">Select Favorite Language</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Python">Python</option>
+                    <option value="C++">C++</option>
+                    <option value="C#">C#</option>
+                    <option value="CSS">CSS</option>
+                    <option value="HTML">HTML</option>
+                </select>
+            <div class="top-bot">
+                <label for="comments">Comments (optional):</label>
+            </div>    
+                <textarea name="comments" class="input2" cols="30" rows="20" placeholder="*Provide Comments Here*"></textarea>
+            <div class="top-bot">    
+                <input class="submit" type="submit" value="Submit">
+            </div> 
+        </form>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    </div>
+</body>
+</html>
